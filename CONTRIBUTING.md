@@ -7,7 +7,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/yourusername/taiga-devlake-plugin.git
+   git clone https://github.com/irfanuddinahmad/taiga-devlake-plugin.git
    cd taiga-devlake-plugin
    ```
 3. Add upstream remote:

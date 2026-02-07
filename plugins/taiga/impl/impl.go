@@ -26,10 +26,10 @@ import (
 	coreModels "github.com/apache/incubator-devlake/core/models"
 	"github.com/apache/incubator-devlake/core/plugin"
 	helper "github.com/apache/incubator-devlake/helpers/pluginhelper/api"
-	"github.com/yourusername/taiga-devlake-plugin/plugins/taiga/api"
-	"github.com/yourusername/taiga-devlake-plugin/plugins/taiga/models"
-	"github.com/yourusername/taiga-devlake-plugin/plugins/taiga/models/migrationscripts"
-	"github.com/yourusername/taiga-devlake-plugin/plugins/taiga/tasks"
+	"github.com/irfanuddinahmad/taiga-devlake-plugin/plugins/taiga/api"
+	"github.com/irfanuddinahmad/taiga-devlake-plugin/plugins/taiga/models"
+	"github.com/irfanuddinahmad/taiga-devlake-plugin/plugins/taiga/models/migrationscripts"
+	"github.com/irfanuddinahmad/taiga-devlake-plugin/plugins/taiga/tasks"
 )
 
 var _ interface {
@@ -177,7 +177,7 @@ func (p Taiga) MakeDataSourcePipelinePlanV200(
 }
 
 func (p Taiga) RootPkgPath() string {
-	return "github.com/yourusername/taiga-devlake-plugin/plugins/taiga"
+	return "github.com/irfanuddinahmad/taiga-devlake-plugin/plugins/taiga"
 }
 
 func (p Taiga) MigrationScripts() []plugin.MigrationScript {

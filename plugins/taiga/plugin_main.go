@@ -19,7 +19,7 @@ package main
 
 import (
 	"github.com/apache/incubator-devlake/core/runner"
-	"github.com/yourusername/taiga-devlake-plugin/plugins/taiga/impl"
+	"github.com/irfanuddinahmad/taiga-devlake-plugin/plugins/taiga/impl"
 	"github.com/spf13/cobra"
 )
 

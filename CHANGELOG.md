@@ -69,4 +69,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-For detailed changes, see the [commit history](https://github.com/yourusername/taiga-devlake-plugin/commits/).
+For detailed changes, see the [commit history](https://github.com/irfanuddinahmad/taiga-devlake-plugin/commits/).

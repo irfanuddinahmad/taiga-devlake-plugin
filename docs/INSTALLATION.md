@@ -17,7 +17,7 @@ Before installing, ensure you have:
 
 1. **Download the binary**:
    ```bash
-   wget https://github.com/yourusername/taiga-devlake-plugin/releases/download/v1.0.0/taiga.so
+   wget https://github.com/irfanuddinahmad/taiga-devlake-plugin/releases/download/v1.0.0/taiga.so
    ```
 
 2. **Copy to DevLake plugins directory**:
@@ -46,7 +46,7 @@ Before installing, ensure you have:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/taiga-devlake-plugin.git
+   git clone https://github.com/irfanuddinahmad/taiga-devlake-plugin.git
    cd taiga-devlake-plugin
    ```
 
@@ -327,5 +327,5 @@ EOF
 ## Support
 
 - 📚 [Documentation](docs/)
-- 🐛 [Report Issues](https://github.com/yourusername/taiga-devlake-plugin/issues)
-- 💬 [Discussions](https://github.com/yourusername/taiga-devlake-plugin/discussions)
+- 🐛 [Report Issues](https://github.com/irfanuddinahmad/taiga-devlake-plugin/issues)
+- 💬 [Discussions](https://github.com/irfanuddinahmad/taiga-devlake-plugin/discussions)

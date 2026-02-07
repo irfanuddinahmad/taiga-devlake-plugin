@@ -89,7 +89,7 @@ curl http://localhost:8080/api/domainlayer/user_stories?projectId=1:123
 - 📚 [Full Installation Guide](docs/INSTALLATION.md)
 - 🔌 [API Reference](docs/API.md)
 - 🤝 [Contributing Guide](CONTRIBUTING.md)
-- 🐛 [Report Issues](https://github.com/yourusername/taiga-devlake-plugin/issues)
+- 🐛 [Report Issues](https://github.com/irfanuddinahmad/taiga-devlake-plugin/issues)
 
 ## Development
 

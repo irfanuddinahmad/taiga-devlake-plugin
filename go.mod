@@ -1,4 +1,4 @@
-module github.com/yourusername/taiga-devlake-plugin
+module github.com/irfanuddinahmad/taiga-devlake-plugin
 
 go 1.21
 

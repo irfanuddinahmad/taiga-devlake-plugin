@@ -1,8 +1,8 @@
 # Taiga Plugin for Apache DevLake
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/taiga-devlake-plugin)](https://goreportcard.com/report/github.com/yourusername/taiga-devlake-plugin)
+[![Go Report Card](https://goreportcard.com/badge/github.com/irfanuddinahmad/taiga-devlake-plugin)](https://goreportcard.com/report/github.com/irfanuddinahmad/taiga-devlake-plugin)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)](https://github.com/yourusername/taiga-devlake-plugin)
+[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)](https://github.com/irfanuddinahmad/taiga-devlake-plugin)
 
 A DevLake plugin for collecting data from Taiga project management platform.
 
@@ -18,7 +18,7 @@ A DevLake plugin for collecting data from Taiga project management platform.
 
 ### Using Pre-built Binary
 
-1. Download the latest release binary (`taiga.so`) from the [releases page](https://github.com/yourusername/taiga-devlake-plugin/releases)
+1. Download the latest release binary (`taiga.so`) from the [releases page](https://github.com/irfanuddinahmad/taiga-devlake-plugin/releases)
 2. Copy to your DevLake plugins directory:
    ```bash
    cp taiga.so /path/to/devlake/backend/bin/plugins/taiga/
@@ -29,7 +29,7 @@ A DevLake plugin for collecting data from Taiga project management platform.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/taiga-devlake-plugin.git
+git clone https://github.com/irfanuddinahmad/taiga-devlake-plugin.git
 cd taiga-devlake-plugin
 
 # Build the plugin
@@ -201,8 +201,8 @@ See [CHANGELOG.md](CHANGELOG.md) for release history.
 ## Support
 
 - 📚 [Documentation](docs/)
-- 🐛 [Issue Tracker](https://github.com/yourusername/taiga-devlake-plugin/issues)
-- 💬 [Discussions](https://github.com/yourusername/taiga-devlake-plugin/discussions)
+- 🐛 [Issue Tracker](https://github.com/irfanuddinahmad/taiga-devlake-plugin/issues)
+- 💬 [Discussions](https://github.com/irfanuddinahmad/taiga-devlake-plugin/discussions)
 
 ## Acknowledgments
 
