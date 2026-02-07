@@ -16,7 +16,11 @@ A DevLake plugin for collecting data from Taiga project management platform.
 
 ## Installation
 
-### Using Pre-built Binary
+> ⚠️ **IMPORTANT**: The pre-built binary is NOT included in the git repository (it's 38MB). You must either:
+> - Download it from [GitHub Releases](https://github.com/irfanuddinahmad/taiga-devlake-plugin/releases), OR
+> - Build from within the DevLake monorepo (building from this standalone repo will fail)
+
+### Option 1: Use Pre-built Binary (Recommended)
 
 1. Download the latest release binary (`taiga.so`) from the [releases page](https://github.com/irfanuddinahmad/taiga-devlake-plugin/releases)
 2. Copy to your DevLake plugins directory:
@@ -25,19 +29,25 @@ A DevLake plugin for collecting data from Taiga project management platform.
    ```
 3. Restart DevLake server
 
-### Building from Source
+### Option 2: Build from DevLake Monorepo
+
+> ⚠️ **Note**: `make build` in this repository will fail. The plugin requires DevLake's internal packages.
+> To build, you must use the DevLake monorepo:
 
 ```bash
-# Clone the repository
-git clone https://github.com/irfanuddinahmad/taiga-devlake-plugin.git
-cd taiga-devlake-plugin
+# Clone DevLake monorepo
+git clone https://github.com/apache/incubator-devlake.git
+cd incubator-devlake/backend
 
-# Build the plugin
-make build
+# Copy plugin source to DevLake
+cp -r /path/to/taiga-devlake-plugin/plugins/taiga plugins/
 
-# Copy to DevLake
-cp bin/taiga.so /path/to/devlake/backend/bin/plugins/taiga/
+# Build within DevLake context
+cd plugins/taiga
+go build -buildmode=plugin -o ../../bin/plugins/taiga/taiga.so .
 ```
+
+See [PLUGIN_STATUS.md](PLUGIN_STATUS.md) for detailed explanation of why standalone builds don't work.
 
 ## Configuration
 

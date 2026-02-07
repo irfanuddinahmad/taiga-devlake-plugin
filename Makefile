@@ -14,6 +14,20 @@ DEVLAKE_DIR ?= ../incubator-devlake/backend
 all: fmt build
 
 build:
+	@echo "⚠️  WARNING: Building from this standalone repository will fail!"
+	@echo "The plugin requires DevLake's internal packages that aren't available here."
+	@echo ""
+	@echo "Options:"
+	@echo "  1. Use the pre-built binary from GitHub Releases"
+	@echo "  2. Build from within the DevLake monorepo"
+	@echo ""
+	@echo "See README.md and PLUGIN_STATUS.md for details."
+	@echo ""
+	@read -p "Continue anyway? [y/N] " answer; \
+	if [ "$$answer" != "y" ] && [ "$$answer" != "Y" ]; then \
+		echo "Build cancelled."; \
+		exit 1; \
+	fi
 	@echo "Building Taiga plugin..."
 	@mkdir -p $(BUILD_DIR)
 	cd $(PLUGINS_DIR) && $(GO) build $(GOFLAGS) -buildmode=plugin -ldflags="$(LDFLAGS)" -o ../../$(BUILD_DIR)/$(PLUGIN_NAME).so .
