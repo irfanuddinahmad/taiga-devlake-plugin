@@ -20,6 +20,12 @@ A DevLake plugin for collecting data from Taiga project management platform.
 > - Download it from [GitHub Releases](https://github.com/irfanuddinahmad/taiga-devlake-plugin/releases), OR
 > - Build from within the DevLake monorepo (building from this standalone repo will fail)
 
+> ⚠️ **VERSION COMPATIBILITY**: Pre-built binaries are version-specific to DevLake. If you get a version mismatch error like:
+> ```
+> plugin was built with a different version of package github.com/apache/incubator-devlake/core/config
+> ```
+> You must rebuild the plugin against your DevLake version (see Option 2 below).
+
 ### Option 1: Use Pre-built Binary (Recommended)
 
 1. Download the latest release binary (`taiga.so`) from the [releases page](https://github.com/irfanuddinahmad/taiga-devlake-plugin/releases)
@@ -28,23 +34,39 @@ A DevLake plugin for collecting data from Taiga project management platform.
    cp taiga.so /path/to/devlake/backend/bin/plugins/taiga/
    ```
 3. Restart DevLake server
+4. If you get a version mismatch error, use Option 2 to rebuild
 
-### Option 2: Build from DevLake Monorepo
+### Option 2: Rebuild for Your DevLake Version
 
 > ⚠️ **Note**: `make build` in this repository will fail. The plugin requires DevLake's internal packages.
-> To build, you must use the DevLake monorepo:
+> To build, you must use your DevLake installation:
 
 ```bash
-# Clone DevLake monorepo
-git clone https://github.com/apache/incubator-devlake.git
-cd incubator-devlake/backend
+# Navigate to your DevLake installation
+cd /path/to/your/devlake/backend
 
 # Copy plugin source to DevLake
 cp -r /path/to/taiga-devlake-plugin/plugins/taiga plugins/
 
-# Build within DevLake context
-cd plugins/taiga
-go build -buildmode=plugin -o ../../bin/plugins/taiga/taiga.so .
+# Build plugin against your DevLake version
+go build -buildmode=plugin -o bin/plugins/taiga/taiga.so plugins/taiga/*.go
+
+# Restart DevLake with the plugin
+export DEVLAKE_PLUGINS=taiga
+go run server/main.go
+```
+
+**For fresh DevLake installation:**
+```bash
+# Clone DevLake
+git clone https://github.com/apache/incubator-devlake.git
+cd incubator-devlake/backend
+
+# Copy plugin source
+cp -r /path/to/taiga-devlake-plugin/plugins/taiga plugins/
+
+# Build plugin
+go build -buildmode=plugin -o bin/plugins/taiga/taiga.so plugins/taiga/*.go
 ```
 
 See [PLUGIN_STATUS.md](PLUGIN_STATUS.md) for detailed explanation of why standalone builds don't work.

@@ -4,26 +4,39 @@ Get up and running with the Taiga DevLake plugin in 5 minutes.
 
 ## 1. Installation
 
+> ⚠️ **VERSION COMPATIBILITY**: Pre-built binaries are version-specific. If you get a version mismatch error, use Option B.
+
 ### Option A: Use Pre-built Binary (Fastest)
 
 ```bash
-# Copy pre-built binary to DevLake
-cp bin/taiga.so /path/to/devlake/backend/bin/plugins/taiga/
+# Download from GitHub releases
+wget https://github.com/irfanuddinahmad/taiga-devlake-plugin/releases/latest/download/taiga.so
+
+# Copy to DevLake plugins directory
+mkdir -p /path/to/devlake/backend/bin/plugins/taiga/
+cp taiga.so /path/to/devlake/backend/bin/plugins/taiga/
 
 # Restart DevLake
 cd /path/to/devlake/backend
-./stop_devlake.sh && ./start_devlake.sh
+export DEVLAKE_PLUGINS=taiga
+go run server/main.go
 ```
 
-### Option B: Build from Source
+### Option B: Rebuild for Your DevLake Version
 
 ```bash
-# Build
-make build
+# Navigate to your DevLake installation
+cd /path/to/devlake/backend
 
-# Install
-export DEVLAKE_DIR=/path/to/devlake/backend
-make install
+# Copy plugin source
+cp -r /path/to/taiga-devlake-plugin/plugins/taiga plugins/
+
+# Build against your DevLake version
+go build -buildmode=plugin -o bin/plugins/taiga/taiga.so plugins/taiga/*.go
+
+# Start DevLake
+export DEVLAKE_PLUGINS=taiga
+go run server/main.go
 ```
 
 ## 2. Configuration

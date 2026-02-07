@@ -4,6 +4,8 @@
 
 This repository contains a **Taiga plugin for Apache DevLake** that enables data collection from Taiga project management systems. The plugin is fully functional and includes a pre-built binary ready for use.
 
+> ⚠️ **VERSION COMPATIBILITY**: Plugin binaries are version-specific to DevLake. If you encounter version mismatch errors, you must rebuild the plugin against your DevLake installation (see Rebuild Instructions below).
+
 ## Current Status
 
 ✅ **Plugin Implementation** - Complete (22 Go source files)
@@ -76,6 +78,56 @@ taiga-devlake-plugin/
 ## Quick Start
 
 ### Option 1: Use Pre-built Binary (Recommended)
+
+**Note**: If you get a version mismatch error, use Option 2 to rebuild.
+
+```bash
+# Download from GitHub releases
+wget https://github.com/irfanuddinahmad/taiga-devlake-plugin/releases/latest/download/taiga.so
+
+# Copy to DevLake
+mkdir -p /path/to/devlake/backend/bin/plugins/taiga/
+cp taiga.so /path/to/devlake/backend/bin/plugins/taiga/
+
+# Start DevLake
+cd /path/to/devlake/backend
+export DEVLAKE_PLUGINS=taiga
+go run server/main.go
+```
+
+### Option 2: Rebuild for Your DevLake Version
+
+If you encounter a version mismatch error like:
+```
+plugin was built with a different version of package github.com/apache/incubator-devlake/core/config
+```
+
+Rebuild the plugin:
+
+```bash
+# Navigate to your DevLake installation
+cd /path/to/your/devlake/backend
+
+# Copy plugin source
+cp -r /path/to/taiga-devlake-plugin/plugins/taiga plugins/
+
+# Build against your DevLake version
+go build -buildmode=plugin -o bin/plugins/taiga/taiga.so plugins/taiga/*.go
+
+# Start DevLake
+export DEVLAKE_PLUGINS=taiga
+go run server/main.go
+```
+
+## Version Compatibility
+
+**Important**: Plugin binaries are version-specific to DevLake due to Go's plugin system requirements:
+
+- A plugin built against DevLake v0.21.0 will only work with v0.21.0
+- A plugin built against DevLake main branch will only work with that specific commit
+- If DevLake updates its core packages, you must rebuild the plugin
+
+**Solution**: When in doubt, always rebuild the plugin from source within your DevLake installation (Option 2 above).
 
 ```bash
 # 1. Copy the plugin to your DevLake installation
