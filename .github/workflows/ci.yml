@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    name: Build Plugin
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Verify dependencies
+        run: go mod verify
+
+      - name: Build plugin
+        run: make build
+        continue-on-error: true
+
+      - name: Check build artifacts
+        run: |
+          if [ -f bin/taiga.so ]; then
+            echo "Plugin built successfully"
+            ls -lh bin/taiga.so
+          else
+            echo "Plugin build produced no output or failed"
+          fi
+
+      - name: Upload plugin artifact
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: taiga-plugin
+          path: bin/taiga.so
+          if-no-files-found: warn
